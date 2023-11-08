@@ -32,5 +32,6 @@ export async function POST(req) {
 
   await s3client.send(uploadCommand);
 
-  return Response.json({name});
+  return Response.json({name,ext,newName,id});
+
 }

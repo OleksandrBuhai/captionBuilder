@@ -2,10 +2,12 @@
 import { useState } from "react";
 import UploadIcon from "./UploadIcon"
 import axios from 'axios'
+import { useRouter } from "next/navigation";
 
 export default function UploadForm() {
 
     const [isUploading, setIsUploading] = useState(false)
+    const router = useRouter()
 
     async function upload(e) {
         e.preventDefault();
@@ -19,11 +21,15 @@ export default function UploadForm() {
                 setIsUploading(true)
                 const res = await axios.postForm('/api/upload', { file, });
                 console.log(res.data);
+                setIsUploading(false)
+                const newName = res.data.newName
+                router.push('/' + newName)
             } catch (error) {
                 console.error('Error during file upload:', error);
             }
+      
         }
-        setIsUploading(false)
+      
     }
 
     return (

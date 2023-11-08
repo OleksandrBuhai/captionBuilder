@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "latest",
+    "@aws-sdk/client-transcribe": "^3.445.0",
     "axios": "^1.6.0",
     "next": "14.0.1",
     "react": "^18",
