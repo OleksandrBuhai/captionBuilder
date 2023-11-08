@@ -13,8 +13,8 @@ export async function POST(req) {
   const s3client = new S3Client({
     region: 'us-east-2',
     credentials: {
-      accessKeyId: process.env.AWS_ACCESSS_KEY ,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        accessKeyId: process.env.AWS_ACCESSS_KEY,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     },
   });
 
@@ -34,4 +34,5 @@ export async function POST(req) {
 
   return Response.json({name,ext,newName,id});
 
+  
 }
