@@ -31,12 +31,12 @@ export default function FilePage({ params }) {
                 const status = response.data?.status;
                 const transcription = response.data?.transcription
                 if (status === 'IN_PROGRESS') {
-                    setInProgress(true)
+                    setIsTranscrabing(true)
                     setTimeout(getTranscription, 3000)
                 } else {
-                    setInProgress(false)
+                    setIsTranscrabing(false)
                     setAwsTranscriptionItems(
-                    clearTransriotionItems(transcription.results.items))
+                        clearTransriotionItems(transcription.results.items))
                 }
             })
     }
@@ -45,29 +45,41 @@ export default function FilePage({ params }) {
 
     if (isTranscribing) {
         return (
-            <div>Transcribing your video</div>
+            <div className="flex flex-row gap-5">
+            <div className="text-white text-3xl">Transcribing your video. Please wait </div>
+                <div className="animate-spin h-6 w-6 ml-2 border-t-4 border-white"></div>
+           
+            </div>
         )
     }
 
     if (isFetchingInfo) {
         return (
-            <div>Fetching your video</div>
+            <div className="flex flex-row gap-5">
+            <div className="text-white text-3xl ">Fetching your video. Please wait   </div>
+                <div className="animate-spin h-6 w-6 ml-2 border-t-4 border-white"></div>
+         
+            </div>
         )
     }
 
     return (
-        <div >
-            <div className="grid grid-cols-2 gap-8">
-                <div className="">
-                    <h2 className="text-2xl mb-4 text-white/80">
-                        Transcription
-                    </h2>
-                    <TranscriptionEditor awsTranscriptionItems={awsTranscriptionItems}
-                        setAwsTranscriptionItems={setAwsTranscriptionItems} />
+        <>
+
+            <div className="" >
+                <div className="md:grid md:grid-cols-2 md:gap-8 flex-col ">
+                    <div className="">
+                        <h2 className="text-2xl mb-4 text-white/80 ">
+                            Transcription
+                        </h2>
+                        <TranscriptionEditor awsTranscriptionItems={awsTranscriptionItems}
+                            setAwsTranscriptionItems={setAwsTranscriptionItems} />
+                    </div>
+
+                    <ResultVideo fileName={fileName}
+                        transcriptionItems={awsTranscriptionItems} />
                 </div>
-                <ResultVideo fileName={fileName}
-                transcriptionItems = {awsTranscriptionItems} />
             </div>
-        </div>
+        </>
     )
 }

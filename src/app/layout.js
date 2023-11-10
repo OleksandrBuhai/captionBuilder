@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
             <nav className='flex gap-6 text-white border border-[#f64c72] rounded-l items-center p-4 text-xl'>
               <Link href='/'>Home</Link>
               <Link href='/pricing'>Price</Link>
-              <a href="mailto:contact@epiccaptions.com">Contact</a>
+              <a href="mailto:oleksandr.buugay@gmail.com">Contact</a>
             </nav>
           </header>
           {children}

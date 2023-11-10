@@ -13,7 +13,7 @@ export default function TranscriptionEditor({
 
     return (
         <>
-            <div className="grid grid-cols-3 gap-1 sticky top-0 text-white">
+            <div className="grid grid-cols-3 gap-1 sticky top-0  text-white">
                 <div className="w-24">From</div>
                 <div className="w-24">End</div>
                 <div className="w-30">Content</div>
